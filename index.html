@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Moonlife Scripts</title>
+    <link rel="icon" type="image/png" href="IMG/moonlife.png">
     <style>
         /* page background to match the dark pill header look */
         :root{
@@ -163,7 +164,7 @@
         }
         @media (max-width:560px){
             .topbar{ padding:10px; gap:10px; }
-            nav{ display:none; } /* hide center nav on small screens */
+            /* nav{ display:none; }  <-- REMOVE or comment out this line */
         }
 
         /* keep main content spaced down from header */
@@ -265,6 +266,43 @@
         @media (max-width:520px){
             .card .thumb{ height:120px; }
         }
+
+        /* New styles for hero description section */
+        .hero-desc {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 110px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .hero-desc h2 {
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1.18;
+            letter-spacing: 0.01em;
+            color: #fff;
+        }
+        .hero-gradient {
+            background: linear-gradient(90deg, #8ab4ff 10%, #fff 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            display: block;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #b7cfff;
+            margin-top: 8px;
+            letter-spacing: 0.01em;
+            opacity: 0.92;
+        }
+        @media (max-width: 600px) {
+            .hero-desc h2 { font-size: 1.25rem; }
+            .hero-sub { font-size: 0.98rem; }
+        }
     </style>
 </head>
 <body>
@@ -304,7 +342,15 @@
 
     <main>
         <!-- main content goes here -->
-
+          <section class="Description" aria-label="Description">
+            <div class="hero-desc">
+                <h2>
+                    <span class="hero-gradient">Premium Roblox scripts.</span>
+                    <br>
+                    <span class="hero-sub">Updated, reliable, and optimized for PC and mobile gameplay.</span>
+                </h2>
+            </div>
+        </section>
         <!-- Recent scripts templates (added) -->
         <section class="recent" aria-label="Recent scripts">
             <div class="recent-header">
@@ -401,12 +447,12 @@
                 {
                     title: "*BEST* [FPS] Flick Script - [AIM BOT, AUTO FARM MONEY, ESP & MORE] - PC & MOBILE",
                     img: "IMG/flick.png",
-                    href: "https://rekonise.com/best-fps-flick-script-aim-bot-auto-farm-money-esp-more-pc-mobile"
+                    href: "https://rekonise.com/best-fps-flick-script-aim-bot-auto-farm-money-esp-and-more-pc-and-mobile-eehmg"
                 },
                 {
                     title: "*NEW 2026* RIVALS SCRIPT",
                     img: "IMG/rivals.png",
-                    href: "https://rekonise.com/new-2026-rivals-script"
+                    href: "https://rekonise.com/new-2026-rivals-script-2am94"
                 },
                 {
                     title: " *UNLIMITED COOKIES* DRIVING EMPIRE SCRIPT",
