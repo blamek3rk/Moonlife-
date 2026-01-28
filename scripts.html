@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Moonlife Scripts — Scripts</title>
+    <style>
+        :root{
+            --bg-1:#07080a;
+            --bg-2:#0f1114;
+            --accent: #8ab4ff;
+            --muted: rgba(255,255,255,0.7);
+        }
+        html,body{ height:100%; margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: linear-gradient(180deg,var(--bg-1),var(--bg-2)); color:#fff; }
+        .header-wrap{ max-width:1100px; margin:28px auto; padding:10px; position:relative; }
+        .topbar{ display:flex; align-items:center; gap:20px; padding:12px 18px; border-radius:999px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.15)); backdrop-filter: blur(6px); box-shadow: 0 6px 30px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); }
+        .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--muted); flex: 0 0 auto; }
+        .brand img{ height:34px; width:34px; object-fit:contain; display:block; border-radius:6px; }
+        .brand .title{ font-weight:700; font-size:1.05rem; letter-spacing:0.2px; color:#fff; }
+        nav{ flex:1 1 auto; display:flex; justify-content:center; }
+        .nav-list{ display:flex; gap:22px; list-style:none; margin:0; padding:0; align-items:center; }
+        .nav-list a{
+            color:rgba(255,255,255,0.75);
+            text-decoration:none;
+            padding:6px 8px;
+            border-radius:12px;
+            font-weight:600;
+            font-size:0.82rem;
+            transition: transform .14s ease, box-shadow .14s ease, color .14s ease;
+            position:relative; /* required for ::after positioning */
+            cursor:pointer;
+        }
+
+        /* shared underline pseudo-element (hidden by default) */
+        .nav-list a::after{
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 0;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(138,180,255,0.14), rgba(138,180,255,0.06));
+            box-shadow: 0 6px 18px rgba(138,180,255,0.12);
+            transition: width .16s ease, opacity .16s ease;
+            opacity: 0;
+        }
+
+        /* show underline on hover and for active link */
+        .nav-list a:hover::after,
+        .nav-list a.active::after{
+            width: 52%;
+            opacity: 1;
+        }
+
+        .nav-list a:hover{
+            color:#fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(2,6,23,0.5);
+        }
+        .nav-list a:active{ transform: translateY(0); }
+        .nav-list a:focus{ outline:2px solid rgba(138,180,255,0.12); outline-offset:4px; }
+        .nav-list a.active{ color:var(--accent); }
+        .actions{ display:flex; gap:12px; align-items:center; flex:0 0 auto; }
+        .button{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+            color:#fff;
+            border-radius:10px;
+            padding:6px 8px;           /* reduced padding */
+            font-weight:700;
+            text-decoration:none;
+            font-size:0.82rem;        /* smaller font */
+            border:1px solid rgba(255,255,255,0.04);
+            transition: transform .14s ease, box-shadow .14s ease;
+        }
+        .button:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(2,6,23,0.5); }
+
+        .discord-icon{
+            width:16px;               /* smaller icon */
+            height:16px;
+            display:inline-block;
+            vertical-align:middle;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+        }
+        @media (max-width:800px){ .nav-list{ gap:12px; } .brand .title{ display:none; } }
+        @media (max-width:560px){ .topbar{ padding:10px; gap:10px; } nav{ display:none; } }
+        main{ max-width:1100px; margin:18px auto; padding:28px 22px; color:#e6edf3; }
+    </style>
+</head>
+<body>
+    <div class="header-wrap">
+        <header class="topbar" role="banner" aria-label="Main header">
+            <a class="brand" href="home.html" aria-label="Moonlife Scripts home">
+                <img src="IMG/moonlife.png" alt="Moonlife logo">
+                <span class="title">Moonlife Scripts</span>
+            </a>
+
+            <nav role="navigation" aria-label="Primary">
+                <ul class="nav-list">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a class="active" href="scripts.html">Scripts</a></li>
+                    <li><a href="legal-contact.html">Legal &amp; Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="actions" aria-hidden="false">
+                <a class="button" href="https://www.youtube.com/@moonlifescripts" target="_blank" rel="noopener noreferrer" aria-label="Moonlife YouTube">
+                    <img class="discord-icon" src="IMG/youtube-logo-white.png" alt="YouTube">
+                    YouTube
+                </a>
+
+                <a class="button" href="https://www.tiktok.com/@moonlifescripts" target="_blank" rel="noopener noreferrer" aria-label="Moonlife TikTok">
+                    <img class="discord-icon" src="IMG/tiktok.png" alt="TikTok">
+                    TikTok
+                </a>
+
+                <a class="button" href="https://discord.com/invite/moonlifescripts/" target="_blank" rel="noopener noreferrer" aria-label="Moonlife Discord">
+                    <img class="discord-icon" src="IMG/discord.png" alt="Discord">
+                    Join Discord
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <main>
+        <!-- scripts page content -->
+        <h1>Scripts</h1>
+        <p class="muted">List of scripts / descriptions go here.</p>
+    </main>
+
+    <script>
+        (function(){
+            const NAV_KEY = 'ml_active';
+            const navLinks = document.querySelectorAll('.nav-list a');
+            const brandLink = document.querySelector('.brand');
+
+            function setActiveLinkByHref(href){
+                let matched = false;
+                navLinks.forEach(a=>{
+                    if(a.getAttribute('href') === href){
+                        a.classList.add('active');
+                        matched = true;
+                    } else {
+                        a.classList.remove('active');
+                    }
+                });
+                return matched;
+            }
+
+            // nav click: highlight + persist
+            navLinks.forEach(a=>{
+                a.addEventListener('click', function(){
+                    navLinks.forEach(x => x.classList.remove('active'));
+                    this.classList.add('active');
+                    try{ localStorage.setItem(NAV_KEY, this.getAttribute('href')); }catch(e){}
+                });
+            });
+
+            // brand click: mark Home active and persist
+            if(brandLink){
+                brandLink.addEventListener('click', function(){
+                    const homeHref = 'home.html';
+                    setActiveLinkByHref(homeHref);
+                    try{ localStorage.setItem(NAV_KEY, homeHref); }catch(e){}
+                });
+            }
+
+            // restore on load
+            try{
+                const stored = localStorage.getItem(NAV_KEY);
+                if(stored && setActiveLinkByHref(stored)) {}
+                else {
+                    const path = location.pathname.split('/').pop() || 'home.html';
+                    if(!setActiveLinkByHref(path)){
+                        const hasActive = Array.from(navLinks).some(a=>a.classList.contains('active'));
+                        if(!hasActive && navLinks[0]) navLinks[0].classList.add('active');
+                    }
+                }
+            }catch(e){}
+        })();
+    </script>
+      <footer style="max-width:1100px;margin:24px auto;color:rgba(234,240,255,0.7);text-align:center;padding:12px 18px;font-size:0.92rem;">
+        © 2026 · Moonlife Scripts · All rights reserved
+    </footer>
+</body>
+</html>
