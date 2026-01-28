@@ -270,14 +270,14 @@
 <body>
     <div class="header-wrap">
         <header class="topbar" role="banner" aria-label="Main header">
-            <a class="brand" href="home.html" aria-label="Moonlife Scripts home">
+            <a class="brand" href="index.html" aria-label="Moonlife Scripts home">
                 <img src="IMG/moonlife.png" alt="Moonlife logo">
                 <span class="title">Moonlife Scripts</span>
             </a>
 
             <nav role="navigation" aria-label="Primary">
                 <ul class="nav-list">
-                    <li><a class="active" href="home.html">Home</a></li>
+                    <li><a class="active" href="index.html">Home</a></li>
                     <li><a href="scripts.html">Scripts</a></li>
                     <li><a href="legal-contact.html">Legal &amp; Contact</a></li>
                 </ul>
@@ -360,10 +360,10 @@
             // When brand is clicked, mark "home" as active and store
             if(brandLink){
                 brandLink.addEventListener('click', function(){
-                    const homeHref = 'home.html';
+                    const homeHref = 'index.html';
                     setActiveLinkByHref(homeHref);
                     try{ localStorage.setItem(NAV_KEY, homeHref); }catch(e){}
-                    // navigation proceeds to home.html normally
+                    // navigation proceeds to index.html normally
                 });
             }
 
@@ -372,7 +372,7 @@
                 const stored = localStorage.getItem(NAV_KEY);
                 if(stored && setActiveLinkByHref(stored)) {}
                 else {
-                    const path = location.pathname.split('/').pop() || 'home.html';
+                    const path = location.pathname.split('/').pop() || 'index.html';
                     if(!setActiveLinkByHref(path)){
                         const hasActive = Array.from(navLinks).some(a=>a.classList.contains('active'));
                         if(!hasActive && navLinks[0]) navLinks[0].classList.add('active');
@@ -464,3 +464,4 @@
 </body>
 
 </html>
+
