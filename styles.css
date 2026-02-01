@@ -1,0 +1,297 @@
+/* page background to match the dark pill header look */
+:root{
+    --bg-1:#07080a;
+    --bg-2:#0f1114;
+    --pill-start: rgba(255,255,255,0.03);
+    --pill-end: rgba(255,255,255,0.02);
+    --accent: #8ab4ff;
+    --muted: rgba(255,255,255,0.7);
+}
+html,body{
+    height:100%;
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
+    color:#fff;
+}
+
+/* container that holds the pill header centered on the page */
+.header-wrap{
+    max-width:1100px;
+    margin:28px auto;
+    padding:10px;
+    position:relative;
+}
+
+.topbar{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:12px 18px;
+    border-radius:999px; /* pill shape */
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.15));
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 30px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.03);
+}
+
+/* Brand on the left */
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--muted);
+    flex: 0 0 auto;
+}
+.brand img{
+    height:34px;
+    width:34px;
+    object-fit:contain;
+    display:block;
+    border-radius:6px;
+}
+.brand .title{
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:0.2px;
+    color:#fff;
+}
+
+/* Center nav */
+nav{
+    flex:1 1 auto;
+    display:flex;
+    justify-content:center;
+}
+.nav-list{
+    display:flex;
+    gap:22px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    align-items:center;
+}
+.nav-list a{
+    color:rgba(255,255,255,0.75);
+    text-decoration:none;
+    padding:6px 8px;
+    border-radius:12px;
+    font-weight:600;
+    font-size:0.82rem;
+    transition: transform .14s ease, box-shadow .14s ease, color .14s ease;
+    position:relative;
+    cursor:pointer;
+}
+
+.nav-list a::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    width: 0;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(138,180,255,0.14), rgba(138,180,255,0.06));
+    box-shadow: 0 6px 18px rgba(138,180,255,0.12);
+    transition: width .16s ease, opacity .16s ease;
+    opacity: 0;
+}
+
+.nav-list a:hover::after,
+.nav-list a.active::after{
+    width: 52%;
+    opacity: 1;
+}
+
+.nav-list a:hover{
+    color:#fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(2,6,23,0.5); /* same hover treatment as the action buttons */
+}
+.nav-list a:active{ transform: translateY(0); }
+.nav-list a:focus{ outline:2px solid rgba(138,180,255,0.12); outline-offset:4px; }
+
+/* active highlight similar to the picture */
+.nav-list a.active{
+    color:var(--accent);
+}
+
+/* Right-side actions */
+.actions{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    flex:0 0 auto;
+}
+.button{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+    color:#fff;
+    border-radius:10px;
+    padding:6px 8px;           /* reduced padding */
+    font-weight:700;
+    text-decoration:none;
+    font-size:0.82rem;        /* smaller font */
+    border:1px solid rgba(255,255,255,0.04);
+    transition: transform .14s ease, box-shadow .14s ease;
+}
+.button:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(2,6,23,0.5); }
+
+.discord-icon{
+    width:16px;               /* smaller icon */
+    height:16px;
+    display:inline-block;
+    vertical-align:middle;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+
+/* low width adjustments */
+@media (max-width:800px){
+    .nav-list{ gap:12px; }
+    .brand .title{ display:none; } /* save space */
+}
+@media (max-width:560px){
+    .topbar{ padding:10px; gap:10px; }
+    /* nav{ display:none; }  <-- REMOVE or comment out this line */
+}
+
+/* keep main content spaced down from header */
+main{ max-width:1100px; margin:18px auto; padding:8px 18px; color:#e6edf3; }
+
+/* Recent scripts / card styles (added) */
+.recent {
+    max-width:1100px;
+    margin:18px auto 6px;
+    padding:0 18px;
+}
+.recent-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+}
+.recent-header h3{
+    margin:0;
+    color:#eaf0ff;
+    font-size:1.15rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.recent-header a.view-all{
+    color:rgba(234,240,255,0.75);
+    text-decoration:none;
+    font-weight:700;
+}
+
+.cards-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap:16px;
+}
+
+.card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.16));
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    display:flex;
+    flex-direction:column;
+    min-height:220px;
+    text-decoration:none;
+    color:inherit;
+}
+.card:hover{ transform:translateY(-6px); box-shadow: 0 12px 36px rgba(2,6,23,0.7); }
+
+.card .thumb{
+    height:140px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+
+/* removed .badge styles to hide top text labels */
+
+.card .content{
+    padding:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    flex:1 1 auto;
+}
+.card .title{
+    font-weight:800;
+    font-size:0.98rem;
+    color:#fff;
+    margin:0;
+    line-height:1.14;
+}
+.card .sub{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:rgba(234,240,255,0.7);
+    font-size:0.88rem;
+    justify-content:flex-start;
+}
+.card .author{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+.card .author img{
+    width:26px;
+    height:26px;
+    border-radius:8px;
+    object-fit:cover;
+    display:block;
+    border:1px solid rgba(255,255,255,0.03);
+}
+
+@media (max-width:520px){
+    .card .thumb{ height:120px; }
+}
+
+/* New styles for hero description section */
+.hero-desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 110px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+.hero-desc h2 {
+    font-size: 2.1rem;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.18;
+    letter-spacing: 0.01em;
+    color: #fff;
+}
+.hero-gradient {
+    background: linear-gradient(90deg, #8ab4ff 10%, #fff 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero-sub {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #b7cfff;
+    margin-top: 8px;
+    letter-spacing: 0.01em;
+    opacity: 0.92;
+}
+@media (max-width: 600px) {
+    .hero-desc h2 { font-size: 1.25rem; }
+    .hero-sub { font-size: 0.98rem; }
+}
