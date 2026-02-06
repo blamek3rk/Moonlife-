@@ -748,3 +748,266 @@ footer {
         max-height: 400px;
     }
 }
+
+/* ════════════════════════════════════════════
+   WELCOME POPUP
+   ════════════════════════════════════════════ */
+.welcome-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.welcome-popup.hidden {
+    pointer-events: none;
+    opacity: 0;
+    display: none;
+}
+
+.popup-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.popup-content {
+    position: relative;
+    z-index: 1001;
+    background: linear-gradient(135deg, rgba(10, 14, 20, 0.98) 0%, rgba(7, 8, 10, 0.98) 100%);
+    border: 1px solid rgba(138, 180, 255, 0.3);
+    border-radius: 28px;
+    padding: 48px 40px;
+    max-width: 520px;
+    width: 90%;
+    box-shadow: 
+        0 0 60px rgba(138, 180, 255, 0.15),
+        0 20px 80px rgba(2, 6, 23, 0.8),
+        inset 0 1px 0 rgba(138, 180, 255, 0.15),
+        inset 0 1px 20px rgba(138, 180, 255, 0.05);
+    animation: popupSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.popup-content::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(138, 180, 255, 0.5), transparent);
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.popup-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(138, 180, 255, 0.08);
+    border: 1px solid rgba(138, 180, 255, 0.25);
+    border-radius: 10px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popup-close:hover {
+    background: rgba(138, 180, 255, 0.16);
+    border-color: rgba(138, 180, 255, 0.5);
+    color: #fff;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 0 16px rgba(138, 180, 255, 0.2);
+}
+
+.popup-close svg {
+    width: 18px;
+    height: 18px;
+}
+
+.popup-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.popup-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(138, 180, 255, 0.35)) drop-shadow(0 8px 16px rgba(2, 6, 23, 0.5));
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.popup-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.popup-text {
+    margin: 0 0 32px 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(228, 234, 245, 0.75);
+    text-align: center;
+}
+
+.popup-safety-note {
+    display: block;
+    font-size: 0.92rem;
+    color: rgba(138, 180, 255, 0.85);
+    font-weight: 500;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(138, 180, 255, 0.15);
+    line-height: 1.6;
+}
+
+.popup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.popup-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 14px;
+    font-size: 0.93rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.popup-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+}
+
+.popup-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.popup-btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, rgba(138, 180, 255, 0.75) 100%);
+    color: #000;
+    border: 1px solid rgba(138, 180, 255, 0.6);
+    box-shadow: 
+        0 0 30px rgba(138, 180, 255, 0.4),
+        0 8px 24px rgba(138, 180, 255, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+}
+
+.popup-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 0 40px rgba(138, 180, 255, 0.5),
+        0 12px 32px rgba(138, 180, 255, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.popup-btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.popup-btn-secondary {
+    background: linear-gradient(135deg, rgba(138, 180, 255, 0.12) 0%, rgba(138, 180, 255, 0.06) 100%);
+    color: var(--accent);
+    border: 1.5px solid rgba(138, 180, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(138, 180, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popup-btn-secondary:hover {
+    background: linear-gradient(135deg, rgba(138, 180, 255, 0.2) 0%, rgba(138, 180, 255, 0.12) 100%);
+    border-color: rgba(138, 180, 255, 0.6);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(138, 180, 255, 0.15);
+}
+
+.popup-btn-secondary:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .popup-content {
+        padding: 36px 28px;
+        border-radius: 20px;
+    }
+    
+    .popup-logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+    }
+    
+    .popup-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .popup-text {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+    
+    .popup-btn {
+        padding: 12px 24px;
+        font-size: 0.88rem;
+        border-radius: 12px;
+    }
+}

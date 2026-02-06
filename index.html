@@ -22,6 +22,27 @@
 <div id="stars2"></div>
 <div id="stars3"></div>
 
+<!-- ─── WELCOME POPUP ─── -->
+<div id="welcomePopup" class="welcome-popup hidden">
+    <div class="popup-overlay"></div>
+    <div class="popup-content">
+        <button class="popup-close" id="closePopup" aria-label="Close popup">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="popup-header">
+            <img src="IMG/moonlife.png" alt="Moonlife" class="popup-logo">
+            <h2>Welcome to Moonlife Scripts</h2>
+        </div>
+        <p class="popup-text">Discover premium, reliable Roblox scripts updated regularly for PC and mobile. Join our community and get access to the latest scripts!<br><br><span class="popup-safety-note">Moonlife Scripts will never force users to download any scripts. All scripts are provided in a simple copy-and-paste format. Transparency and user safety always come first.</span></p>
+        <div class="popup-buttons">
+            <button class="popup-btn popup-btn-primary" id="dismissPopup">I Understand</button>
+        </div>
+    </div>
+</div>
+
 <!-- ─── HEADER ─── -->
 <header class="header" role="banner">
     <div class="header-glow"></div>
@@ -429,6 +450,56 @@
     // Refresh data every 2 minutes
     setInterval(fetchDiscordWidget, 120000);
 
+})();
+
+// ─── WELCOME POPUP ─── 
+(function() {
+    const POPUP_SHOWN_KEY = 'moonlife_popup_shown';
+    const POPUP_HIDE_DURATION = 86400000; // 24 hours in milliseconds
+    
+    function initWelcomePopup() {
+        const popup = document.getElementById('welcomePopup');
+        const closeBtn = document.getElementById('closePopup');
+        const dismissBtn = document.getElementById('dismissPopup');
+        const browseBtn = popup.querySelector('.popup-btn-primary');
+        
+        // Check if popup has been shown recently
+        const lastShown = localStorage.getItem(POPUP_SHOWN_KEY);
+        const now = Date.now();
+        
+        if (!lastShown || (now - parseInt(lastShown)) > POPUP_HIDE_DURATION) {
+            // Show popup after a short delay for better UX
+            setTimeout(() => {
+                popup.classList.remove('hidden');
+            }, 800);
+        }
+        
+        // Close popup handlers
+        const closePopup = () => {
+            popup.classList.add('hidden');
+            localStorage.setItem(POPUP_SHOWN_KEY, Date.now().toString());
+        };
+        
+        closeBtn.addEventListener('click', closePopup);
+        dismissBtn.addEventListener('click', closePopup);
+        
+        // Close when clicking overlay
+        const overlay = popup.querySelector('.popup-overlay');
+        overlay.addEventListener('click', closePopup);
+        
+        // Prevent overlay click from closing when clicking on content
+        const content = popup.querySelector('.popup-content');
+        content.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+    
+    // Initialize popup when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initWelcomePopup);
+    } else {
+        initWelcomePopup();
+    }
 })();
 </script>
 </body>
