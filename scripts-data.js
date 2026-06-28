@@ -6,5 +6,6 @@ const SCRIPTS_DATA = [
     { title:"*NEW 2026* RIVALS SCRIPT", img:"IMG/rivals.png", href:"https://rekonise.com/new-2026-rivals-script-2am94", date: "2026-01-10" },
     { title:"*UNLIMITED COOKIES* DRIVING EMPIRE SCRIPT", img:"IMG/car.png", href:"https://rekonise.com/unlimited-cookies-driving-empire-script-kcpoe", date: "2025-12-05" },
     { title:"99 NIGHTS IN THE FOREST SCRIPT", img:"IMG/99.png", href:"https://rekonise.com/99-nights-in-the-forest-script-au2lm", date: "2025-10-30" },
-    { title:"*BEST* RIVALS SCRIPT - AIMBOT, ESP, UNLOCK ALL & MORE - FREE NO KEY", img:"IMG/rivals2.png", href:"https://rekonise.com/best-rivals-script-aimbot-esp-unlock-all-magic-bullet-and-more-free-no-key-r6ubs", date: "2026-01-31" }
+    { title:"*BEST* RIVALS SCRIPT - AIMBOT, ESP, UNLOCK ALL & MORE - FREE NO KEY", img:"IMG/rivals2.png", href:"https://rekonise.com/best-rivals-script-aimbot-esp-unlock-all-magic-bullet-and-more-free-no-key-r6ubs", date: "2026-01-31" },
+    { title:"[🔥NEW] +1 Speed Keyboard Escape Script | NO KEY, Auto Win, Unlock All Gamepasses", img:"IMG/ca6b1ee1-8e53-4c3a-b204-af6145cc3fce.png", href:"https://rekonise.com/new-1-speed-keyboard-escape-script-or-no-key-auto-win-unlock-all-gamepasses-1pkvh", date: "2026-06-28" }
 ];
